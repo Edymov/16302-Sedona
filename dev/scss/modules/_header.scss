@@ -1,0 +1,40 @@
+.page-header  {
+	background: rgba(0, 0, 0, 0.3);
+	padding: 20px 0;
+}
+
+.logo  {
+	float: left;
+	h1{
+		margin: 0;
+		font-weight: normal;
+	}
+	a{
+		text-transform: uppercase;
+	}
+}
+
+.menu-top  {
+	float: right;
+	.toggle-btn{
+		display: block;
+		font-size: 30px;
+		width: 50px;
+	}
+}
+
+.menu-top__navigation  {
+	display:none;
+	ul  {
+		list-style: none;
+	}
+	li  {
+		text-align: center;
+	}
+	a  {
+		color: white;
+		font: $font-norm bold;
+		padding: 25px 0 22px;
+		display: inline-block;
+	}
+}

@@ -1,7 +1,7 @@
 # Проект «Sedona»
 
 * Студент: [edymov](https://htmlacademy.ru/profile/id16302).
-* Наставник: `Unknown`.
+* Наставник: `Виталий Зюзин`.
 
 --
 

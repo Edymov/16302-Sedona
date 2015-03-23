@@ -1,7 +1,13 @@
+bower_components
 node_modules
 npm-debug.log
 Thumbs.db
 .DS_Store
+.sass-cache
 prepros.cfg
 *.sublime*
 *.map
+*.psd
+*.zip
+*.rar
+.htaccess
