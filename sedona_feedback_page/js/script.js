@@ -68,24 +68,36 @@ $("document").ready(function () {
 								var string = template;
 								var html = Mustache.render(string, {
 
-										age: "Взрослого",
+										age: "взрослого",
 										num: number,
 										type: type
 
 								});
 
-								string = html
+								var string = html
 						}
 						else if (type === "children") {
-							alert("Hello!");
+							var string = template;
+								var html = Mustache.render(string, {
+
+										age: "ребёнка",
+										num: number,
+										type: type
+
+								});
+
+							var string = html
 						}
-				}
-					container.append(string);
+						container.append(string);
+					}
+
 				}
 					else{
 							var rows = container.find('.row[data-type="' + type + '"]');
-							for(var i = 0; i < count*-1; i++ )
-							$(rows[rows.length]).remove();
+							for(var i = 0; i < count*-1; i++ ){
+								$(rows[rows.length -i]).remove();
+							}
+
 					}
 		}
 
