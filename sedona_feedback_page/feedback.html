@@ -64,7 +64,7 @@
 
               <div class="counter clearfix">
                 <button class="counter-action minus">минус</button>
-                <input type="text" name="travel-time" class="travel-time counter-input" value="0">
+                <input type="text" name="travel-time" class="travel-time counter-input" value="0" data-min="1">
                 <button class="counter-action plus">плюс</button>
               </div>
 
@@ -90,7 +90,7 @@
               <label for="text7">Количество взрослых: <span>*</span></label>
               <div class="counter clearfix">
                 <button class="counter-action minus">минус</button>
-                <input type="text" name="people-count" class="people-count counter-input" value="0">
+                <input type="text" name="people-count" class="people-count counter-input" value="0" data-min="1">
                 <button class="counter-action plus">плюс</button>
               </div>
             </div>
@@ -98,7 +98,7 @@
               <label for="text8">Количество детей: <span>*</span></label>
               <div class="counter clearfix">
                 <button class="counter-action minus">минус</button>
-                <input type="text" name="children-count" class="children-count counter-input" value="0">
+                <input type="text" name="children-count" class="children-count counter-input" value="0" data-min="0">
                 <button class="counter-action plus">плюс</button>
               </div>
             </div>
@@ -106,20 +106,9 @@
             </div>
           </div>
 
-          <!-- <div class="row">
-            <div class="col s-4">
-              <label for="text8">Фамилия взрослого №1: <span>*</span></label>
-              <input type="text" id="text8">
-            </div>
-            <div class="col s-4">
-              <label for="text9">Имя взрослого №1: <span>*</span></label>
-              <input type="text" id="text9">
-            </div>
-            <div class="col s-4">
-              <label for="text10">Отчество взрослого №1</label>
-              <input type="text" id="text10">
-            </div>
-          </div> -->
+					<div id="clients-container">
+
+					</div>
 
           <!-- <div class="row">
             <div class="col s-4">
@@ -259,6 +248,26 @@
     </div>
   </div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="js/mustache.min.js"></script>
   <script src="js/script.js"></script>
+
+  <script id="template" type="text/html">
+
+  	<div class="row" data-type="{{type}}">
+      <div class="col s-4">
+        <label for="text8">Фамилия {{age}} №{{num}}: <span>*</span></label>
+        <input type="text" id="text8">
+      </div>
+      <div class="col s-4">
+        <label for="text9">Имя {{age}} №{{num}}: <span>*</span></label>
+        <input type="text" id="text9">
+      </div>
+      <div class="col s-4">
+        <label for="text10">Отчество {{age}} №{{num}}</label>
+        <input type="text" id="text10">
+      </div>
+    </div>
+  </script>
+
 </body>
 </html>

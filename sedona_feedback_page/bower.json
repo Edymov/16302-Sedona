@@ -1,0 +1,21 @@
+{
+  "name": "sedona_feedback_page",
+  "version": "1.1.1",
+  "homepage": "https://github.com/Edymov/16302-Sedona",
+  "authors": [
+    "edymov <edymov@live.ru>"
+  ],
+  "description": "javascript hell",
+  "keywords": [
+    "sss"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
