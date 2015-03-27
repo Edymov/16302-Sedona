@@ -4,13 +4,14 @@ $("document").ready(function () {
 		var btnPlus = $(".plus");
 		var container = $("#clients-container");
 
+		var input = $(".people-count, .children-count");
+
 		var template = document.querySelector("#template").innerHTML;
 		Mustache.parse(template);
 
 		btnPlus.click(function (e) {
 
 				e.preventDefault();
-				var input = $(this).siblings("input");
 				var data = $(this).siblings("input").val();
 				var dataMin = $(this).siblings("input").attr("data-min");
 				var current = parseInt(data, 10);
@@ -19,33 +20,35 @@ $("document").ready(function () {
 				} else {
 						$(this).siblings("input").val(dataMin);
 				}
-				input.on('change', onChange());
+
 		});
 
 		btnMinus.click(function (e) {
 
 				e.preventDefault();
-				var input = $(this).siblings("input");
 				var data = $(this).siblings("input").val();
 				var dataMin = $(this).siblings("input").attr("data-min");
 				var current = parseInt(data, 10);
+				alert(current)
+				if(!current){
+					 $(this).attr('disabled');
+				}
+
 				if (!isNaN(current) && current > dataMin) {
 						$(this).siblings("input").val(current - 1);
 				} else {
 						$(this).siblings("input").val(dataMin);
 				}
 
-				input.on('change', onChange());
-
 		});
 
-
+		input.on('input', onChange);
 
 		function onChange(e) {
 
 				var input = e.currentTarget;
 
-				var newVal = input.val();
+				var newVal = $(input).val();
 				var type;
 				if (input.attr("name") == "people-count") {
 						type = "adult";
@@ -55,7 +58,7 @@ $("document").ready(function () {
 
 				renderTemplate(type, curVal - newVal,  newVal);
 
-				var curVal = input.val();
+				var curVal = $(input).val();
 		}
 
 		function renderTemplate(type, count, number) {
