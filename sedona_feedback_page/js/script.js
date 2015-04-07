@@ -5,6 +5,7 @@ $("document").ready(function () {
 		var container = $("#clients-container");
 
 		var input = $(".people-count, .children-count");
+		var curVal = $(input).val();
 
 		var template = document.querySelector("#template").innerHTML;
 		Mustache.parse(template);
@@ -12,6 +13,7 @@ $("document").ready(function () {
 		btnPlus.click(function (e) {
 
 				e.preventDefault();
+				var curInput = $(this).siblings("input");
 				var data = $(this).siblings("input").val();
 				var dataMin = $(this).siblings("input").attr("data-min");
 				var current = parseInt(data, 10);
@@ -20,16 +22,18 @@ $("document").ready(function () {
 				} else {
 						$(this).siblings("input").val(dataMin);
 				}
+				curInput.trigger("input");
 
 		});
 
 		btnMinus.click(function (e) {
 
 				e.preventDefault();
+				var curInput = $(this).siblings("input");
 				var data = $(this).siblings("input").val();
 				var dataMin = $(this).siblings("input").attr("data-min");
 				var current = parseInt(data, 10);
-				alert(current)
+
 				if(!current){
 					 $(this).attr('disabled');
 				}
@@ -40,6 +44,7 @@ $("document").ready(function () {
 						$(this).siblings("input").val(dataMin);
 				}
 
+				curInput.trigger("input");
 		});
 
 		input.on('input', onChange);
@@ -50,24 +55,24 @@ $("document").ready(function () {
 
 				var newVal = $(input).val();
 				var type;
-				if (input.attr("name") == "people-count") {
+				if ($(input).attr("name") == "people-count") {
 						type = "adult";
-				} else if (input.attr("name") == "children-count") {
+				} else if ($(input).attr("name") == "children-count") {
 						type = "children";
 				}
 
-				renderTemplate(type, curVal - newVal,  newVal);
+				renderTemplate(type, newVal - curVal);
+				curVal = newVal;
 
-				var curVal = $(input).val();
 		}
 
-		function renderTemplate(type, count, number) {
-
-				alert("sadasdas");
+		function renderTemplate(type, count) {
 
 				if (count > 0) {
-					for (var i = 1; i < count; i++) {
+					for (var i = 0; i < count; i++) {
+						var number = container.find(container.find('.row[data-type="' +type + '"]')).length +1;
 						if (type === "adult") {
+
 								var string = template;
 								var html = Mustache.render(string, {
 
@@ -76,29 +81,26 @@ $("document").ready(function () {
 										type: type
 
 								});
-
-								var string = html
 						}
 						else if (type === "children") {
 							var string = template;
-								var html = Mustache.render(string, {
+							var html = Mustache.render(string, {
 
-										age: "ребёнка",
-										num: number,
-										type: type
+								age: "ребёнка",
+								num: number,
+								type: type
 
-								});
+							});
 
-							var string = html
 						}
-						container.append(string);
+						container.append(html);
 					}
 
 				}
 					else{
 							var rows = container.find('.row[data-type="' + type + '"]');
 							for(var i = 0; i < count*-1; i++ ){
-								$(rows[rows.length -i]).remove();
+								$(rows[rows.length -i - 1]).remove();
 							}
 
 					}
